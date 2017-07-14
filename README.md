@@ -89,7 +89,6 @@ public class ResponseWrapper extends HttpServletResponseWrapper {
 #### ServletInputStream ####
 ```
 public class RequestInputStream extends ServletInputStream{
-
     protected ByteArrayInputStream byteArrayInputStream;
 
     public RequestInputStream(byte[] bytes) {
@@ -105,7 +104,6 @@ public class RequestInputStream extends ServletInputStream{
 #### ServletOutputStream ####
 ```
 public class ResponseOutputStream extends ServletOutputStream {
-
     protected ServletOutputStream stream;
     protected ByteArrayOutputStream cache;
 
@@ -117,36 +115,13 @@ public class ResponseOutputStream extends ServletOutputStream {
 
     @Override
     public void write(int b) throws IOException {
-        checkNullStreams();
-        stream.write(b);
-        cache.write(b);
-    }
-
-    @Override
-    public void write(byte[] b) throws IOException {
-        checkNullStreams();
-        stream.write(b);
-        cache.write(b);
-    }
-
-    @Override
-    public void write(byte[] b, int off, int len) throws IOException {
-        checkNullStreams();
-        stream.write(b, off, len);
-        cache.write(b, off, len);
-    }
-
-    public ByteArrayOutputStream getBuffer() {
-        return cache;
-    }
-
-    protected void checkNullStreams() throws IOException {
         if (stream == null)
             throw new IOException("ServletOutputStream stream: null, unable to write");
         else if (cache == null)
             throw new IOException("ByteArrayOutputStream cache: null, unable to write");
+        stream.write(b);
+        cache.write(b);
     }
-
 }
 ```
 ### Interceptor ###
