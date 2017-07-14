@@ -34,7 +34,7 @@ public class RequestResponseWrapperFilter implements Filter {
 ```
 ### Wrappers ###
 #### Request Wrapper ####
-You need `commons-io`. There are other ways to convert an inputStream to byte[]. But I feel this is easy :)
+You need `commons-io`. There are other ways to convert an `InputStream` to `byte[]`. But I feel this is easy :)
 ```
 public class RequestWrapper extends HttpServletRequestWrapper{
 
